@@ -1816,13 +1816,7 @@ class BertForMultiModalPreTraining(BertPreTrainedModel):
             prediction_scores_pv.view(-1, self.config.vocab_size),
             masked_em_labels.view(-1),
         )
-        # masked_lm_loss = masked_lm_loss * modality_weight[0]
-        # masked_img_loss = masked_img_loss * modality_weight[1]
-        # masked_em_loss = masked_em_loss * modality_weight[2]
-        # masked_video_loss = masked_video_loss * modality_weight[3]
-        # masked_audio_loss = masked_audio_loss * modality_weight[4]
 
-        # total_loss = masked_lm_loss + next_sentence_loss + masked_img_loss
         if return_features:
             return masked_lm_loss.unsqueeze(0),\
                    masked_em_loss.unsqueeze(0),\
